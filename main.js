@@ -1,8 +1,9 @@
-noseX = 0;
-noseY = 0;
+noseX =0;
+noseY =0;
+
 
 function preload() {
-  clown_nose = loadImage('clown-nose.png');
+    clown_nose = loadImage('mustache.png');
 }
 
 function setup() {
@@ -10,24 +11,20 @@ function setup() {
     canvas.center();
     video = createCapture(VIDEO);
     video.size(300,300);
-    video.hide();
+    video.hide()
 
     poseNet = ml5.poseNet(video, modelLoaded);
     poseNet.on('pose', gotPoses);
 }
 
 function draw() {
-image(video, 0, 0, 300, 300);
-fill(255,0,0);
-stroke(255,0,0);
-circle(noseX , noseY , 20);
-//image(clown_nose, noseX, noseY, 30, 30);
+    image(video, 0, 0, 300, 300);
+    image(clown_nose, noseX, noseY, 30, 30);
 }
 
 function take_snapshot(){
     save('myFilterImage.png');
 }
-
 function modelLoaded() {
     console.log('PoseNet is Initialized');
 }
@@ -43,4 +40,3 @@ function gotPoses(results) {
             
         }
 }
-
